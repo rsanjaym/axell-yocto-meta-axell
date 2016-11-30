@@ -21,8 +21,7 @@ do_install() {
     install -m 0755 ${S}/amdvlk64.so ${D}/${libdir}
 }
 
-INSANE_SKIP_${PN} += "already-stripped"
-INSANE_SKIP_${PN} += "ldflags"
+INSANE_SKIP_${PN} += "already-stripped ldflags file-rdeps"
 
 FILES_${PN} += "${libdir}"
 FILES_SOLIBSDEV = ""
