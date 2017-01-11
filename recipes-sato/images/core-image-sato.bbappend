@@ -1,4 +1,4 @@
-EXTRA_AXELL_PACKAGES = "amdvlk pachinko-sdk"
+EXTRA_AXELL_PACKAGES = "amdvlk pachinko-sdk libtxc"
 IMAGE_INSTALL_append_amdfalconx86 = "${@bb.utils.contains("INCLUDE_VULKAN", "yes", " ${EXTRA_AXELL_PACKAGES}", "", d)}"
 
 # Tweaks to reduce the root filesystem footprint and apply a Limit of 500MB
