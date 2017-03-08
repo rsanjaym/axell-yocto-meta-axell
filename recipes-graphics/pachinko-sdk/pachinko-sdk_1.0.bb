@@ -8,11 +8,11 @@ RDEPENDS_${PN} = "${PN}-bins"
 inherit cmake python3native
 
 LICENSE = "BSD-2-Clause"
-LIC_FILES_CHKSUM = "file://${S}/samples/simpleDecoder/src/decodeH264.cpp;md5=634c31ed71556840bdab9f0b9ff58cba"
+LIC_FILES_CHKSUM = "file://${S}/samples/simpleDecoder/src/decodeH264.cpp;md5=c26442a8d8213b8ebc4432cffd25de1b"
 
-S = "${WORKDIR}/Vulkan_Pachinko_SDK_1.0-Alpha"
+S = "${WORKDIR}/Vulkan_Pachinko_SDK"
 
-SRC_URI = "file://Vulkan_Pachinko_SDK_1.0-Alpha.tar.bz2 \
+SRC_URI = "file://Vulkan_Pachinko_SDK.tar.bz2 \
            file://0001-tiledPlayback-fix-path-searching-for-TileDecoder.patch"
 
 EXTRA_OECMAKE += "-DCMAKE_SKIP_RPATH=TRUE"
