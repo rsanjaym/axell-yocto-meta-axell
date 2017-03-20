@@ -20,16 +20,12 @@ PACKAGES =+ "${PN}-bins"
 
 do_install() {
     # Install the binary components first
-    install -d ${D}/${libdir}
-    install -m 0755 ${S}/modules/TileDecoder/lib/x86_64/Release/libTileDecoder.so ${D}/${libdir}
-    install -m 0644 ${S}/thirdParty/openh264/lib/libopenh264.a ${D}/${libdir}
-
-    install -d ${D}${includedir}
-    find ${S}/thirdParty/openh264/inc -name *.h -exec install -m 0644 {} ${D}${includedir} \;
+    install -d ${D}/${libdir}/${PN}
+    install -m 0755 ${S}/modules/TileDecoder/lib/x86_64/Release/libTileDecoder.so ${D}/${libdir}/${PN}
 
     install -d ${D}${bindir}
-    install ${S}/samples/tiledPlayback/bin/x86_64/Release/tiledPlayback ${D}${bindir}
+    install ${S}/samples/tiledPlayback/bin/x86_64/Release/tiledPlayback ${D}${bindir}/tiledPlayback-OGL
     install ${S}/samples/uvdPlayback/bin/x86_64/Release/uvdPlayback ${D}${bindir}
 }
 
-FILES_${PN}-bins = "${libdir}/*.so"
+FILES_${PN}-bins = "${libdir}/${PN}/*.so"
