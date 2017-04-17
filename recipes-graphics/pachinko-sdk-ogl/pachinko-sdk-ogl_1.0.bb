@@ -8,11 +8,13 @@ RDEPENDS_${PN} = "${PN}-bins"
 inherit cmake python3native
 
 LICENSE = "BSD-2-Clause"
-LIC_FILES_CHKSUM = "file://${S}/samples/uvdPlayback/src/uvdPlayback.cpp;md5=3c9af5ec20771c86459d9788f675b0e8"
+LIC_FILES_CHKSUM = "file://${S}/samples/uvdPlayback/src/uvdPlayback.cpp;md5=9e582326d9c681fff00bd17673f402d0"
 
 S = "${WORKDIR}/OpenGL_Pachinko_SDK"
 
-SRC_URI = "file://OpenGL_Pachinko_SDK.tar.bz2"
+SRC_URI = "file://OpenGL_Pachinko_SDK.tar.bz2 \
+	   file://0001-uvdPlayback-change-to-work-on-yocto.patch \
+"
 
 EXTRA_OECMAKE += "-DCMAKE_SKIP_RPATH=TRUE"
 
@@ -20,12 +22,12 @@ PACKAGES =+ "${PN}-bins"
 
 do_install() {
     # Install the binary components first
-    install -d ${D}/${libdir}/${PN}
-    install -m 0755 ${S}/modules/TileDecoder/lib/x86_64/Release/libTileDecoder.so ${D}/${libdir}/${PN}
+    install -d ${D}/${libdir}
+    install -m 0755 ${S}/modules/TileDecoder/lib/x86_64/Release/libTileDecoder.so ${D}/${libdir}
 
     install -d ${D}${bindir}
-    install ${S}/samples/tiledPlayback/bin/x86_64/Release/tiledPlayback ${D}${bindir}/tiledPlayback-OGL
+    install ${S}/samples/tiledPlayback/bin/x86_64/Release/tiledPlayback ${D}${bindir}
     install ${S}/samples/uvdPlayback/bin/x86_64/Release/uvdPlayback ${D}${bindir}
 }
 
-FILES_${PN}-bins = "${libdir}/${PN}/*.so"
+FILES_${PN}-bins = "${libdir}/*.so"
